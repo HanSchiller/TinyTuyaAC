@@ -42,7 +42,7 @@ class TinyTuyaAC extends IPSModuleStrict
 
     public function RequestAction(string $Ident, mixed $Value): void
     {
-        LogMessage('TinyTuya RequestAction: ' . $Ident . ' = ' . json_encode($Value), KL_DEBUG);
+        LogMessage('TinyTuya RequestAction: ' . $Ident . ' = ' . string($Value), KL_MESSAGE);
 
         switch ($Ident) {
             case 'Power':
@@ -83,8 +83,6 @@ class TinyTuyaAC extends IPSModuleStrict
             return;
         }
         
-        logMessage('TinyTuya API Antwort: ' . substr($response, 0, 500), KL_DEBUG);
-
         $json = json_decode($response, true);
 
         if (!is_array($json)) {
