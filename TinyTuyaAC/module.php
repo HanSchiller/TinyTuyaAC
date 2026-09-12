@@ -14,7 +14,7 @@ class TinyTuyaAC extends IPSModuleStrict
         $this->RegisterPropertyBoolean('AutoPoll', true);
 
         $this->RegisterVariableBoolean('Power', 'Power', [], 10);
-        $this->RegisterVariableFloat('TargetTemperature', 'Solltemperatur', [], 20);
+        $this->RegisterVariableInteger('TargetTemperature', 'Solltemperatur', [], 20);
         $this->RegisterVariableFloat('CurrentTemperature', 'Isttemperatur', [], 30);
 
         $this->EnableAction('Power');
@@ -48,7 +48,7 @@ class TinyTuyaAC extends IPSModuleStrict
                 break;
 
             case 'TargetTemperature':
-                $value = (float)$Value;
+                $value = (int)$Value;
                 $factor = max(1, $this->ReadPropertyInteger('TemperatureFactor'));
 
                 if ($factor > 1) {
@@ -151,9 +151,6 @@ class TinyTuyaAC extends IPSModuleStrict
 
         if (is_bool($value)) {
             $apiValue = $value ? 'true' : 'false';
-        } elseif (is_float($value)) {
-            $factor = max(1, $this->ReadPropertyInteger('TemperatureFactor'));
-            $apiValue = strval($value * $factor);
         } else {
             $apiValue = (string)$value;
         }
