@@ -42,8 +42,6 @@ class TinyTuyaAC extends IPSModuleStrict
 
     public function RequestAction(string $Ident, mixed $Value): void
     {
-        $this->LogMessage('TinyTuya RequestAction: ' . $Ident . ' = ' . strval($Value), KL_MESSAGE);
-
         switch ($Ident) {
             case 'Power':
                 $this->SetDPS(1, (bool)$Value);
@@ -63,6 +61,7 @@ class TinyTuyaAC extends IPSModuleStrict
             default:
                 throw new Exception('Unbekannte Variable: ' . $Ident);
         }
+        $this->LogMessage('TinyTuya RequestAction: ' . $Ident . ' = ' . strval($Value), KL_MESSAGE);
     }
 
 
@@ -166,6 +165,8 @@ class TinyTuyaAC extends IPSModuleStrict
             . '/'
             . rawurlencode($apiValue);
 
+        $this->LogMessage('TinyTuya HTTP POST: ' . $url, KL_DEBUG);
+        
         $response = $this->HttpGet($url);
 
         if ($response === false) {
