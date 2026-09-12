@@ -63,6 +63,7 @@ class TinyTuyaAC extends IPSModuleStrict
         }
     }
 
+    
     public function Poll(): void
     {
         $deviceID = trim($this->ReadPropertyString('DeviceID'));
