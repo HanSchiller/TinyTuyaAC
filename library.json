@@ -1,0 +1,12 @@
+{
+  "id": "{9E9E3A8C-5D42-4B16-A6C5-2C2F7F9B0A61}",
+  "author": "Hannes Schiller",
+  "name": "TinyTuya AC",
+  "url": "",
+  "compatibility": {
+    "version": "8.1"
+  },
+  "version": "1.0",
+  "build": 1,
+  "date": 0
+}

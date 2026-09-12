@@ -1,0 +1,16 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs / temporary files
+*.log
+*.tmp
+
+# Secrets / local configuration
+.env
+*.secret
+devices.json

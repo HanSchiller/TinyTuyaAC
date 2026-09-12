@@ -1,0 +1,15 @@
+{
+  "id": "{D7A0B2F1-6E3C-4B1A-9C52-7B2A1E9F4D31}",
+  "name": "TinyTuyaAC",
+  "type": 3,
+  "vendor": "TinyTuyaAC",
+  "aliases": [
+    "TinyTuya AC",
+    "TinyTuya Klimaanlage"
+  ],
+  "url": "",
+  "parentRequirements": [],
+  "childRequirements": [],
+  "implemented": [],
+  "prefix": "TTAC"
+}
