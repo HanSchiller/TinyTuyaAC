@@ -42,7 +42,7 @@ class TinyTuyaAC extends IPSModuleStrict
 
     public function RequestAction(string $Ident, mixed $Value): void
     {
-        $this->LogMessage('TinyTuya RequestAction: ' . $Ident . ' = ' . string($Value), KL_MESSAGE);
+        $this->LogMessage('TinyTuya RequestAction: ' . $Ident . ' = ' . $Value, KL_MESSAGE);
 
         switch ($Ident) {
             case 'Power':
