@@ -152,7 +152,8 @@ class TinyTuyaAC extends IPSModuleStrict
         if (is_bool($value)) {
             $apiValue = $value ? 'true' : 'false';
         } elseif (is_float($value)) {
-            $apiValue = rtrim(rtrim(sprintf('%.4f', $value), '0'), '.');
+            $factor = max(1, $this->ReadPropertyInteger('TemperatureFactor'));
+            $apiValue = strval($value * $factor);
         } else {
             $apiValue = (string)$value;
         }
