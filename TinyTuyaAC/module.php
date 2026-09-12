@@ -165,8 +165,8 @@ class TinyTuyaAC extends IPSModuleStrict
             . '/'
             . rawurlencode($apiValue);
 
-        $this->LogMessage('TinyTuya HTTP POST: ' . $url, KL_DEBUG);
-        
+        $this->LogMessage('TinyTuya HTTP POST: ' . $url, KL_MESSAGE);
+
         $response = $this->HttpGet($url);
 
         if ($response === false) {
