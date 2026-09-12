@@ -1,50 +1,42 @@
 # TinyTuyaAC für IP-Symcon
 
-IP-Symcon-Modul zur Anbindung des TinyTuya API Servers.
+Version 1.1.0
 
-Getestete Zielplattform:
-- IP-Symcon 9.x
-- TinyTuya API Server auf Port 8888
+Das Modul bindet eine TinyTuya-API an IP-Symcon an.
 
-## Repository-Struktur
+## Unterstützte Datenpunkte
 
-```text
-TinyTuyaAC/
-├── library.json
-├── README.md
-└── TinyTuyaAC/
-    ├── module.json
-    ├── module.php
-    └── form.json
-```
-
-## TinyTuya API
-
-Status:
-`GET http://192.168.1.3:8888/status/{DeviceID}`
-
-DPS setzen:
-`GET http://192.168.1.3:8888/set/{DeviceID}/{DPS}/{Value}`
-
-DPS der Klimaanlagen:
 - DP1 = Power
 - DP2 = Solltemperatur
 - DP3 = Isttemperatur
+- DP4 = Betriebsmodus
+- DP5 = Lüftergeschwindigkeit
+- DP30 = Schwingen
+- DP36 = LED Beleuchtung
+- DP104 = Turbo Modus
 
-## Geräte
+### Betriebsmodus (DP4)
 
-- Isabella: `bf8743955dd81b5b33hu1x`
-- Paul: `bfedc354dd84af4ddf3c8s`
-- Arbeitszimmer: `bf3312402467be01b9onb5`
-- Schlafzimmer: `bf9a270ab3ee2f2bd4aqu7`
+- `auto` = Automatik
+- `cold` = Kühlen
+- `wet` = Entfeuchten
+- `wind` = Lüften
+- `hot` = Heizen
 
-## Installation
+### Lüftergeschwindigkeit (DP5)
 
-1. Repository auf GitHub pushen.
-2. In IP-Symcon Modulverwaltung das Repository über die GitHub-URL hinzufügen.
-3. IP-Symcon lädt die Bibliothek unter `/var/lib/symcon/modules/TinyTuyaAC`.
-4. Danach über "Instanz hinzufügen" -> "TinyTuyaAC" eine Instanz pro Klimaanlage anlegen.
+- `auto` = Automatik
+- `low` = Niedrig
+- `middle` = Mittel
+- `high` = Hoch
 
-## Sicherheit
+## Temperatur
 
-Keine Local Keys, Passwörter oder andere Zugangsdaten in dieses Repository eintragen.
+Die Solltemperatur wird als Integer in IP-Symcon geführt. Bei `TemperatureFactor = 10` wird z.B. 24 °C als TinyTuya-Wert `240` übertragen.
+
+Die Isttemperatur bleibt ein Float.
+
+## API
+
+- GET `/status/{DeviceID}`
+- GET `/set/{DeviceID}/{DPS}/{Value}`
