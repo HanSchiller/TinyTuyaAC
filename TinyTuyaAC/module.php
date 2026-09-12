@@ -42,6 +42,8 @@ class TinyTuyaAC extends IPSModuleStrict
 
     public function RequestAction(string $Ident, mixed $Value): void
     {
+        LogMessage('TinyTuya RequestAction: ' . $Ident . ' = ' . json_encode($Value), KL_DEBUG);
+
         switch ($Ident) {
             case 'Power':
                 $this->SetDPS(1, (bool)$Value);
@@ -63,7 +65,7 @@ class TinyTuyaAC extends IPSModuleStrict
         }
     }
 
-    
+
     public function Poll(): void
     {
         $deviceID = trim($this->ReadPropertyString('DeviceID'));
@@ -80,6 +82,8 @@ class TinyTuyaAC extends IPSModuleStrict
             $this->SetStatus(200);
             return;
         }
+        
+        logMessage('TinyTuya API Antwort: ' . substr($response, 0, 500), KL_DEBUG);
 
         $json = json_decode($response, true);
 
