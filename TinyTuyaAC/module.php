@@ -332,6 +332,7 @@ class TinyTuyaAC extends IPSModuleStrict
         }
 
         // Nach dem Schreiben den tatsächlichen Gerätestatus erneut lesen.
+        sleep(1);
         $this->Poll();
     }
 
